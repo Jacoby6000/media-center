@@ -1,0 +1,16 @@
+log*
+logs/*
+
+config/*
+**/config
+
+*.db*
+*.pid
+
+**/MediaCover
+**/Backup*
+**/xdg
+
+jackett/Jackett
+
+config.xml

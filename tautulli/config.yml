@@ -1,0 +1,16 @@
+---
+version: "2"
+services:
+  sonarr:
+    image: linuxserver/tautulli
+    container_name: tautulli
+    environment:
+      - PUID=1002
+      - PGID=1004
+      - TZ=America/Chicago
+    volumes:
+      - /opt/dockerized/tautulli/config:/config
+      - /mnt/media/public/plex/library/Library/Application Support/Plex Media Server/Logs:/logs
+    ports:
+      - 8181:8181
+    restart: unless-stopped

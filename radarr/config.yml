@@ -1,0 +1,17 @@
+---
+version: "2"
+services:
+  sonarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1002
+      - PGID=1004
+      - TZ=America/Chicago
+    volumes:
+      - /opt/dockerized/radarr:/config
+      - /mnt/media/public/plex/movies:/movies
+      - /mnt/media/torrent-downloads:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
