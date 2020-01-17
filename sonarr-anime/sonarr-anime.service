@@ -1,0 +1,15 @@
+[Unit]
+Description=Sonarr Anime Service
+After=docker.service
+
+[Service]
+Type=oneshot
+User=arcade
+Group=arcade
+RemainAfterExit=yes
+WorkingDirectory=/opt/dockerized/sonarr-anime
+ExecStart=/usr/bin/docker-compose -f /opt/dockerized/sonarr-anime/config.yml up -d
+ExecStop=/usr/bin/docker-compose -f /opt/dockerized/sonarr-anime/config.yml down
+
+[Install]
+WantedBy=multi-user.target

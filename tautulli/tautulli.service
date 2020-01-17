@@ -1,0 +1,15 @@
+[Unit]
+Description=Tautulli Service
+After=docker.service
+
+[Service]
+Type=oneshot
+User=arcade
+Group=arcade
+RemainAfterExit=yes
+WorkingDirectory=/opt/dockerized/tautulli
+ExecStart=/usr/bin/docker-compose -f /opt/dockerized/tautulli/config.yml up -d
+ExecStop=/usr/bin/docker-compose -f /opt/dockerized/tautulli/config.yml down
+
+[Install]
+WantedBy=multi-user.target

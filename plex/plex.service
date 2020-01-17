@@ -1,0 +1,16 @@
+# /etc/systemd/system/harbor.service
+[Unit]
+Description=Plex Service
+After=docker.service
+
+[Service]
+Type=oneshot
+User=arcade
+Group=arcade
+RemainAfterExit=yes
+WorkingDirectory=/opt/dockerized/plex
+ExecStart=/usr/bin/docker-compose -f /opt/dockerized/plex/config.yml up -d
+ExecStop=/usr/bin/docker-compose -f /opt/dockerized/plex/config.yml down
+
+[Install]
+WantedBy=multi-user.target

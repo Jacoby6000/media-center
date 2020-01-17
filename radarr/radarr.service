@@ -1,0 +1,15 @@
+[Unit]
+Description=Radarr Service
+After=docker.service
+
+[Service]
+Type=oneshot
+User=arcade
+Group=arcade
+RemainAfterExit=yes
+WorkingDirectory=/opt/dockerized/radarr
+ExecStart=/usr/bin/docker-compose -f /opt/dockerized/radarr/config.yml up -d
+ExecStop=/usr/bin/docker-compose -f /opt/dockerized/radarr/config.yml down
+
+[Install]
+WantedBy=multi-user.target
