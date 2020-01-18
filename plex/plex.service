@@ -13,4 +13,4 @@ ExecStart=/usr/bin/docker-compose -f /opt/dockerized/plex/config.yml up -d
 ExecStop=/usr/bin/docker-compose -f /opt/dockerized/plex/config.yml down
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=media-center.target

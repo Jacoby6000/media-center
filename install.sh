@@ -27,16 +27,28 @@ for service in ${SERVICES//,/ } ; do
 
   echo "Configuring nginx for $service."
   rm -f /etc/nginx/sites-available/$service.conf
-  ln -s $DIR/$service/$service.conf /etc/nginx/sites-available
+  ln -s $DIR/$service/$service.conf /etc/nginx/sites-available/
 
   rm -f /etc/nginx/sites-enabled/$service.conf
-  ln -s /etc/nginx/sites-available/$service.conf /etc/nginx/sites-enabled/$service.conf
+  ln -s /etc/nginx/sites-available/$service.conf /etc/nginx/sites-enabled/
 
 done
 
 echo ""
+echo "Installing Parent service."
+sleep 1
+rm -f /etc/systemd/system/media-center.target
+ln -s $DIR/media-center.target /etc/systemd/system/
+
+echo ""
 echo "Reloading nginx configuration"
 systemctl reload nginx
+
+echo "Enabling services."
+systemctl enable media-center
+
+echo "Starting services."
+systemctl start media-center
 
 echo ""
 echo "Done."
