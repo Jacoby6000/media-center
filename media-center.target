@@ -1,3 +1,9 @@
 [Unit]
 Description=Home media center
-After=multi-user.target
+Requires=multi-user.target plex.service tautulli.service jackett.service radarr.service sonarr.service sonarr-anime.service sonarr-kids.service nginx.service lidarr.service
+After=multi-user.target 
+
+[Install]
+Alias=media-center.target
+Requires=plex.service tautulli.service jackett.service radarr.service sonarr.service sonarr-anime.service sonarr-kids.service nginx.service lidarr.service
+

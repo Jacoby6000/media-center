@@ -10,10 +10,12 @@ services:
       - PGID=1004
       - VERSION=docker
       - UMASK_SET=022 #optional
-      - PLEX_CLAIM=claim-AcCdCUwsC5U3gzibQAmc
+      - PLEX_CLAIM=claim-G79Vt2sQMzjB92R91Byx
     volumes:
       - /mnt/media/public/plex/library:/config
       - /mnt/media/public/plex/series:/tv
       - /mnt/media/public/plex/movies:/movies
       - /mnt/media/public/plex/anime:/anime
+      - /mnt/media/public/plex/kids:/kids
+      - /mnt/media/public/plex/music:/music
     restart: unless-stopped

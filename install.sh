@@ -6,7 +6,7 @@ echo "Pulling images..."
 echo ""
 sleep 1
 
-IMAGES=tautulli,plex,sonarr,radarr,jackett
+IMAGES=tautulli,plex,sonarr,radarr,jackett,lidarr
 for image in ${IMAGES//,/ } ; do
   docker pull linuxserver/$image
 done
@@ -17,7 +17,7 @@ echo "Done pulling images. Linking systemd services and nginx confs."
 echo ""
 sleep 1
 
-SERVICES=tautulli,plex,sonarr,radarr,jackett,sonarr-anime
+SERVICES=tautulli,plex,sonarr,radarr,jackett,sonarr-anime,sonarr-kids,lidarr
 for service in ${SERVICES//,/ } ; do
   echo ""
   echo "Linking $service systemd service."
@@ -45,10 +45,10 @@ echo "Reloading nginx configuration"
 systemctl reload nginx
 
 echo "Enabling services."
-systemctl enable media-center
+systemctl enable media-center.target
 
 echo "Starting services."
-systemctl start media-center
+systemctl start media-center.target
 
 echo ""
 echo "Done."

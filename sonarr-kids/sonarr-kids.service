@@ -1,0 +1,15 @@
+[Unit]
+Description=Sonarr Kids Service
+After=docker.service
+
+[Service]
+Type=oneshot
+User=arcade
+Group=arcade
+RemainAfterExit=yes
+WorkingDirectory=/opt/dockerized/sonarr-kids
+ExecStart=/usr/bin/docker-compose -f /opt/dockerized/sonarr-kids/config.yml up -d
+ExecStop=/usr/bin/docker-compose -f /opt/dockerized/sonarr-kids/config.yml down
+
+[Install]
+WantedBy=media-center.target
