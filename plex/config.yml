@@ -18,4 +18,6 @@ services:
       - /mnt/media/public/plex/anime:/anime
       - /mnt/media/public/plex/kids:/kids
       - /mnt/media/public/plex/music:/music
+    ports:
+      - 32400:32400
     restart: unless-stopped
